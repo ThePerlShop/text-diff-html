@@ -5,7 +5,7 @@ package Text::Diff::HTML;
 use strict;
 use vars qw(@ISA $VERSION);
 use HTML::Entities;
-use Text::Diff; # Just to be safe.
+use Text::Diff (); # Just to be safe.
 
 $VERSION = '0.01';
 @ISA = qw(Text::Diff::Unified);
@@ -83,7 +83,7 @@ sub hunk {
             $hunk .= qq{</span><span class="$class">};
         }
 
-        # Output the line.
+        # Output the appropriate line.
         my $idx = $opcode ne '+' ? SEQ_A_IDX : SEQ_B_IDX;
         $hunk .= encode_entities("$opcode " . $seqs->[$idx][$op->[$idx]]);
     }
