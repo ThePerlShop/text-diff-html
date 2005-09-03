@@ -4,7 +4,7 @@ my $build = Module::Build->new(
     module_name        => 'Text::Diff::HTML',
     license            => 'perl',
     requires           => {
-        Text::Diff     => '0',
+        Text::Diff     => '0.11',
         HTML::Entities => '0',
     },
     build_requires     => { Test::Simple  => '0.17' },
