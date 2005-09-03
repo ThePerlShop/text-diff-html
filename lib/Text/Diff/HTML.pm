@@ -39,17 +39,18 @@ sub file_footer {
 # file, all broken into hunks. $ops is an array reference of array references,
 # one corresponding to each of the hunks in the sequences.
 #
-# The contents of each op in $ops tells us what to do with each hunk.
-# Each op can have up to four items:
+# The contents of each op in $ops tell us what to do with each hunk. Each op
+# can have up to four items:
 #
-# 0: The index of the relevant hunk in the first sequence.
-# 1: The index of the relevant hunk in the second sequence.
+# 0: The index of the relevant hunk in the first file sequence.
+# 1: The index of the relevant hunk in the second file sequence.
 # 2: The opcode for the hunk, either '+', '-', or ' '.
-# 3: A flag; not sure what this is, doesn't seem to apply to Unified diffs.
+# 3: A flag; not sure what this is, doesn't seem to apply to unified diffs.
 #
-# So what we do is figure out which op we have, select the hunk from sequence
-# b if it's '+' and sequence a otherwise, and then dispatch to a code
-# reference that knows how to format the hunk for that particular hunk.
+# So what we do is figure out which op we have and output the relevant span
+# tag if it is different from the last op. Then we select the hunk from second
+# sequence (SEQ_B_IDX) if it's '+' and the first sequence (SEQ_A_IDX)
+# otherwise, and then output the opcode and the hunk.
 
 use constant OPCODE    => 2; # "-", " ", "+"
 use constant SEQ_A_IDX => 0;
@@ -74,7 +75,7 @@ sub hunk {
     # Output each line of the hunk.
     while (my $op = shift @$ops) {
         my $opcode = $op->[OPCODE];
-        my $class = $code_map{$opcode} || next;
+        my $class  = $code_map{$opcode} or next;
 
         # Close the last span and start a new one for a new opcode.
         if ($opcode ne $last) {
