@@ -51,27 +51,40 @@ sub file_footer {
 # b if it's '+' and sequence a otherwise, and then dispatch to a code
 # reference that knows how to format the hunk for that particular hunk.
 
-use constant OPCODE  => 2;   # "-", " ", "+"
-use constant SEQ_A   => 0;
-use constant SEQ_B   => 1;
+use constant OPCODE    => 2; # "-", " ", "+"
+use constant SEQ_A_IDX => 0;
+use constant SEQ_B_IDX => 1;
 
 my %code_map = (
-    '+' => sub { '<span class="ins">+ ' . encode_entities(shift) . '</span>' },
-    '-' => sub { '<span class="del">- ' . encode_entities(shift) . '</span>' },
-    ' ' => sub { '<span class="cx">  '  . encode_entities(shift) . '</span>' },
+    '+' => 'ins',
+    '-' => 'del',
+    ' ' => 'ctx',
 );
 
 sub hunk {
     shift;
     my $seqs = [ shift, shift ];
-    my $ops = shift;
-    my $hunk = '';
+    my $ops  = shift;
+    return unless @$ops;
 
+    # Start the span tag for the first opcode.
+    my $last = $ops->[0][ OPCODE ];
+    my $hunk = '<span class="$code_map{ $last }">';
+
+    # Output each line of the hunk.
     while (my $op = shift @$ops) {
         my $opcode = $op->[OPCODE];
-        my $sub = $code_map{$opcode} || next;
-        my $seq_idx = $opcode ne '+' ? SEQ_A : SEQ_B;
-        $hunk .= $sub->($seqs->[$seq_idx][$op->[$seq_idx]]);
+        my $class = $code_map{$opcode} || next;
+
+        # Close the last span and start a new one for a new opcode.
+        if ($opcode ne $last) {
+            $last = $opcode;
+            $hunk .= qq{</span><span class="$class">};
+        }
+
+        # Output the line.
+        my $idx = $opcode ne '+' ? SEQ_A_IDX : SEQ_B_IDX;
+        $hunk .= encode_entities("$opcode " . $seqs->[$idx][$op->[$idx]]);
     }
 
     return $hunk;
