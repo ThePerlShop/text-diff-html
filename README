@@ -1,0 +1,62 @@
+Name
+    Text::Diff::HTML - HTML format for Text::Diff::Unified
+
+Synopsis
+        use Text::Diff;
+
+        my $diff = diff "file1.txt", "file2.txt", { STYLE => 'Text::Diff::HTML' };
+        my $diff = diff \$string1,   \$string2,   { STYLE => 'Text::Diff::HTML' };
+        my $diff = diff \*FH1,       \*FH2,       { STYLE => 'Text::Diff::HTML' };
+        my $diff = diff \&reader1,   \&reader2,   { STYLE => 'Text::Diff::HTML' };
+        my $diff = diff \@records1,  \@records2,  { STYLE => 'Text::Diff::HTML' };
+        my $diff = diff \@records1,  "file.txt",  { STYLE => 'Text::Diff::HTML' };
+
+Description
+    This class subclasses Text::Diff::Unified, a formatting class provided
+    by the Text::Diff module, to add HTML markup to the unified diff format.
+    Each line of the diff has its characters properly encoded for HTML, and
+    is appropriately marked up with a "<span>" tag. Each span tag has a
+    class, defined as follows:
+
+    fileheader
+        The header section for the files being "diff"ed, usually something
+        like:
+
+          --- in.txt    Thu Sep  1 12:51:03 2005
+          +++ out.txt   Thu Sep  1 12:52:12 2005
+
+    hunkheader
+        Header for a diff hunk. The hunk header is usually something like:
+
+          @@ -1,5 +1,7 @@
+
+    cx  Context around the important part of a "diff" hunk. These are
+        contents that have *not* changed between the files being "diff"ed.
+
+    ins An insertion line, starting with "+".
+
+    del An deletion line, starting with "-".
+
+    hunkfooter
+        The footer section of a hunk; contains no contents.
+
+    filefooter
+        The footer section of a file; contains no contents.
+
+    You may do whatever you like with these classes; I highly recommend that
+    you style them using CSS. You'll find an example CSS file in the "eg"
+    directory in the Text-Diff-HTML distribution. You will also likely want
+    to wrap the output of your diff in "<pre>" tags.
+
+Bugs
+    Please send bug reports to <bug-text-diff-html@rt.cpan.org>.
+
+Authors
+    David Wheeler <david@kineticode.com>
+
+Copyright and License
+    Copyright (c) 2005 Kineticode, Inc. All Rights Reserved.
+
+    This module is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+

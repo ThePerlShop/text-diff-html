@@ -1,0 +1,17 @@
+---
+name: Text-Diff-HTML
+version: 0.01
+author:
+  - David Wheeler <david@kineticode.com>
+abstract: HTML format for Text::Diff::Unified
+license: perl
+requires:
+  HTML::Entities: 0
+  Text::Diff: 0
+build_requires:
+  Test::Simple: 0.17
+provides:
+  Text::Diff::HTML:
+    file: lib/Text/Diff/HTML.pm
+    version: 0.01
+generated_by: Module::Build version 0.2702
