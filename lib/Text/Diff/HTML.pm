@@ -173,11 +173,21 @@ style them using CSS. You'll find an example CSS file in the C<eg> directory
 in the Text-Diff-HTML distribution. You will also likely want to wrap the
 output of your diff in C<< <pre> >> tags.
 
+=head1 See Also
+
+=over
+
+=item L<Text::Diff|Text::Diff>
+
+=item L<Algorithm::Diff|Algorithm::Diff>
+
+=back
+
 =head1 Bugs
 
 Please send bug reports to <bug-text-diff-html@rt.cpan.org>.
 
-=head1 Authors
+=head1 Author
 
 =begin comment
 

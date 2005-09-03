@@ -1,6 +1,7 @@
 Revision history for Perl extension Text::Diff::HTML.
 
 0.02
+      - Added "See Also" section to documentation.
 
 0.01  2005-09-03T18:29:21
       - Initial public release.
