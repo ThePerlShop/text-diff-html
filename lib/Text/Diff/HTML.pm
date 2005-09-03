@@ -70,7 +70,7 @@ sub hunk {
 
     # Start the span tag for the first opcode.
     my $last = $ops->[0][ OPCODE ];
-    my $hunk = '<span class="$code_map{ $last }">';
+    my $hunk = qq{<span class="$code_map{ $last }">};
 
     # Output each line of the hunk.
     while (my $op = shift @$ops) {
@@ -88,7 +88,7 @@ sub hunk {
         $hunk .= encode_entities("$opcode " . $seqs->[$idx][$op->[$idx]]);
     }
 
-    return $hunk;
+    return $hunk . '</span>';
 }
 
 1;
