@@ -1,6 +1,6 @@
 ---
 name: Text-Diff-HTML
-version: 0.01
+version: 0.02
 author:
   - David Wheeler <david@kineticode.com>
 abstract: HTML format for Text::Diff::Unified
@@ -13,5 +13,5 @@ build_requires:
 provides:
   Text::Diff::HTML:
     file: lib/Text/Diff/HTML.pm
-    version: 0.01
+    version: 0.02
 generated_by: Module::Build version 0.2702
