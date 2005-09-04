@@ -2,6 +2,10 @@ Revision history for Perl extension Text::Diff::HTML.
 
 0.02
       - Added "See Also" section to documentation.
+      - Added <div>s for the whole file and for each hunk. Suggested by
+        Marshall Roch.
+      - Fixed a number of annoying documentation typos and improved the
+        documentation of each XHTML element.
 
 0.01  2005-09-03T18:29:21
       - Initial public release.

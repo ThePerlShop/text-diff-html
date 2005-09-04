@@ -1,9 +1,6 @@
-/* It's best to put these into their own span or ID to keep them separate from
- * Any other CSS you might have in a document. Otherwise, *all* of your spans
- * will display as blocks! */
-span { display: block; }
-.fileheader, .hunkheader {color: #888888; }
-.ctx { background: #eeeeee; }
-.ins { background: #ddffdd; }
-.del { background: #ffdddd; }
+.file span { display: block; }
+.file .fileheader, .hunkheader {color: #888888; }
+.hunk .ctx { background: #eeeeee; }
+.hunk .ins { background: #ddffdd; }
+.hunk .del { background: #ffdddd; }
 

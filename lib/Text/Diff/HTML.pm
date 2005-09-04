@@ -11,13 +11,13 @@ $VERSION = '0.02';
 @ISA = qw(Text::Diff::Unified);
 
 sub file_header {
-    return '<span class="fileheader">'
+    return '<div class="file"><span class="fileheader">'
            . encode_entities(shift->SUPER::file_header(@_))
            . '</span>';
 }
 
 sub hunk_header {
-    return '<span class="hunkheader">'
+    return '<div class="hunk"><span class="hunkheader">'
            . encode_entities(shift->SUPER::hunk_header(@_))
            . '</span>';
 }
@@ -25,13 +25,13 @@ sub hunk_header {
 sub hunk_footer {
     return '<span class="hunkfooter">'
            . encode_entities(shift->SUPER::hunk_footer(@_))
-           . '</span>';
+           . '</span></div>';
 }
 
 sub file_footer {
     return '<span class="filefooter">'
            . encode_entities(shift->SUPER::file_footer(@_))
-           . '</span>';
+           . '</span></div>';
 }
 
 # Each of the items in $seqs is an array reference. The first one has the
@@ -48,8 +48,8 @@ sub file_footer {
 # 3: A flag; not sure what this is, doesn't seem to apply to unified diffs.
 #
 # So what we do is figure out which op we have and output the relevant span
-# tag if it is different from the last op. Then we select the hunk from second
-# sequence (SEQ_B_IDX) if it's '+' and the first sequence (SEQ_A_IDX)
+# element if it is different from the last op. Then we select the hunk from
+# second sequence (SEQ_B_IDX) if it's '+' and the first sequence (SEQ_A_IDX)
 # otherwise, and then output the opcode and the hunk.
 
 use constant OPCODE    => 2; # "-", " ", "+"
@@ -68,7 +68,7 @@ sub hunk {
     my $ops  = shift;
     return unless @$ops;
 
-    # Start the span tag for the first opcode.
+    # Start the span element for the first opcode.
     my $last = $ops->[0][ OPCODE ];
     my $hunk = qq{<span class="$code_map{ $last }">};
 
@@ -125,53 +125,85 @@ Text::Diff::HTML - HTML format for Text::Diff::Unified
 =head1 Description
 
 This class subclasses Text::Diff::Unified, a formatting class provided by the
-L<Text::Diff|Text::Diff> module, to add HTML markup to the unified diff
-format. Each line of the diff has its characters properly encoded for HTML,
-and is appropriately marked up with a C<< <span> >> tag. Each span tag has a
-class, defined as follows:
+L<Text::Diff|Text::Diff> module, to add XHTML markup to the unified diff
+format. For details on the interface of the C<diff()> function, see the
+L<Text::Diff|Text::Diff> documentation.
+
+In the XHTML formatted by this module, the contents of the diff returned by
+C<diff()> are wrapped in a C<< <div> >> element, as is each hunk of the diff.
+Within each hunk, all content is properly HTML encoded using
+L<HTML::Entities|HTML::Entities>, and the various sections of the diff are
+marked up with C<< <span> >> elements. Each C<< <div> >> and C<< <span> >>
+element has a class, defined as follows:
 
 =over
 
-=item fileheader
+=item C<< <div class="file"> >>
+
+This element contains the entire contents of the diff "file" returned by
+C<diff()>. All of the following elements are subsumed by this one.
+
+=over
+
+=item C<< <span class="fileheader"> >>
 
 The header section for the files being C<diff>ed, usually something like:
 
   --- in.txt	Thu Sep  1 12:51:03 2005
   +++ out.txt	Thu Sep  1 12:52:12 2005
 
-=item hunkheader
+This element immediately follows the opening "file" C<< <div> >> element.
+
+=back
+
+=over
+
+=item C<< <div class="hunk"> >>
+
+This element contains a single diff "hunk". Each hunk may contain the
+following C<< <span> >> elements:
+
+=over
+
+=item C<< <span class="hunkheader"> >>
 
 Header for a diff hunk. The hunk header is usually something like:
 
   @@ -1,5 +1,7 @@
 
-=item cx
+This element immediately follows the opening "hunk" C<< <div> >> element.
+
+=item C<< <span class="ctx"> >>
 
 Context around the important part of a C<diff> hunk. These are contents that
 have I<not> changed between the files being C<diff>ed.
 
-=item ins
+=item C<< <span class="ins"> >>
 
 An insertion line, starting with C<+>.
 
-=item del
+=item C<< <span class="del"> >>
 
-An deletion line, starting with C<->.
+A deletion line, starting with C<->.
 
-=item hunkfooter
+=item C<< <span class="hunkfooter"> >>
 
 The footer section of a hunk; contains no contents.
 
-=item filefooter
+=back
+
+=item C<< <span class="filefooter"> >>
 
 The footer section of a file; contains no contents.
 
 =back
 
+=back
+
 You may do whatever you like with these classes; I highly recommend that you
-style them using CSS. You'll find an example CSS file in the C<eg> directory
+style them using CSS. You'll find an example CSS file in the F<eg> directory
 in the Text-Diff-HTML distribution. You will also likely want to wrap the
-output of your diff in C<< <pre> >> tags.
+output of your diff a C<< <pre> >> element.
 
 =head1 See Also
 
