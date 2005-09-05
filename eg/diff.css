@@ -1,6 +1,6 @@
 .file span { display: block; }
 .file .fileheader, .file .hunkheader {color: #888888; }
-.hunk .ctx { background: #eeeeee; }
-.hunk .ins { background: #ddffdd; }
-.hunk .del { background: #ffdddd; }
+.file .hunk .ctx { background: #eeeeee; }
+.file .hunk .ins { background: #ddffdd; }
+.file .hunk .del { background: #ffdddd; }
 
