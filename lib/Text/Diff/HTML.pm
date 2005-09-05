@@ -7,7 +7,7 @@ use vars qw(@ISA $VERSION);
 use HTML::Entities;
 use Text::Diff (); # Just to be safe.
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 @ISA = qw(Text::Diff::Unified);
 
 sub file_header {

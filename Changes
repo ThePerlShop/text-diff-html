@@ -1,5 +1,7 @@
 Revision history for Perl extension Text::Diff::HTML.
 
+0.04
+
 0.03  2005-09-05T18:40:29
       - Improved CSS examples in "eg/diff.css" by using more specific
         selectors.
