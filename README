@@ -1,5 +1,5 @@
 Name
-    Text::Diff::HTML - HTML format for Text::Diff::Unified
+    Text::Diff::HTML - XHTML format for Text::Diff::Unified
 
 Synopsis
         use Text::Diff;
@@ -24,12 +24,12 @@ Description
     "<span>" elements. Each "<div>" and "<span>" element has a class,
     defined as follows:
 
-    "<div class="file">"
+    * "<div class="file">"
         This element contains the entire contents of the diff "file"
         returned by "diff()". All of the following elements are subsumed by
         this one.
 
-        "<span class="fileheader">"
+        * "<span class="fileheader">"
             The header section for the files being "diff"ed, usually
             something like:
 
@@ -39,11 +39,11 @@ Description
             This element immediately follows the opening "file" "<div>"
             element.
 
-        "<div class="hunk">"
+        * "<div class="hunk">"
             This element contains a single diff "hunk". Each hunk may
             contain the following "<span>" elements:
 
-            "<span class="hunkheader">"
+            * "<span class="hunkheader">"
                 Header for a diff hunk. The hunk header is usually something
                 like:
 
@@ -52,21 +52,21 @@ Description
                 This element immediately follows the opening "hunk" "<div>"
                 element.
 
-            "<span class="ctx">"
+            * "<span class="ctx">"
                 Context around the important part of a "diff" hunk. These
                 are contents that have *not* changed between the files being
                 "diff"ed.
 
-            "<span class="ins">"
+            * "<span class="ins">"
                 An insertion line, starting with "+".
 
-            "<span class="del">"
+            * "<span class="del">"
                 A deletion line, starting with "-".
 
-            "<span class="hunkfooter">"
+            * "<span class="hunkfooter">"
                 The footer section of a hunk; contains no contents.
 
-        "<span class="filefooter">"
+        * "<span class="filefooter">"
             The footer section of a file; contains no contents.
 
     You may do whatever you like with these classes; I highly recommend that

@@ -75,17 +75,17 @@ sub hunk {
     # Output each line of the hunk.
     while (my $op = shift @$ops) {
         my $opcode = $op->[OPCODE];
-        my $class  = $code_map{$opcode} or next;
+        my $class  = $code_map{ $opcode } or next;
 
         # Close the last span and start a new one for a new opcode.
         if ($opcode ne $last) {
-            $last = $opcode;
+            $last  = $opcode;
             $hunk .= qq{</span><span class="$class">};
         }
 
         # Output the appropriate line.
         my $idx = $opcode ne '+' ? SEQ_A_IDX : SEQ_B_IDX;
-        $hunk .= encode_entities("$opcode " . $seqs->[$idx][$op->[$idx]]);
+        $hunk  .= encode_entities("$opcode $seqs->[$idx][$op->[$idx]]");
     }
 
     return $hunk . '</span>';
@@ -103,13 +103,13 @@ other than all uppercase.
 
 =head1 NAME
 
-Text::Diff::HTML - HTML format for Text::Diff::Unified
+Text::Diff::HTML - XHTML format for Text::Diff::Unified
 
 =end comment
 
 =head1 Name
 
-Text::Diff::HTML - HTML format for Text::Diff::Unified
+Text::Diff::HTML - XHTML format for Text::Diff::Unified
 
 =head1 Synopsis
 
@@ -138,14 +138,14 @@ element has a class, defined as follows:
 
 =over
 
-=item C<< <div class="file"> >>
+=item * C<< <div class="file"> >>
 
 This element contains the entire contents of the diff "file" returned by
 C<diff()>. All of the following elements are subsumed by this one.
 
 =over
 
-=item C<< <span class="fileheader"> >>
+=item * C<< <span class="fileheader"> >>
 
 The header section for the files being C<diff>ed, usually something like:
 
@@ -154,18 +154,14 @@ The header section for the files being C<diff>ed, usually something like:
 
 This element immediately follows the opening "file" C<< <div> >> element.
 
-=back
-
-=over
-
-=item C<< <div class="hunk"> >>
+=item * C<< <div class="hunk"> >>
 
 This element contains a single diff "hunk". Each hunk may contain the
 following C<< <span> >> elements:
 
 =over
 
-=item C<< <span class="hunkheader"> >>
+=item * C<< <span class="hunkheader"> >>
 
 Header for a diff hunk. The hunk header is usually something like:
 
@@ -173,26 +169,26 @@ Header for a diff hunk. The hunk header is usually something like:
 
 This element immediately follows the opening "hunk" C<< <div> >> element.
 
-=item C<< <span class="ctx"> >>
+=item * C<< <span class="ctx"> >>
 
 Context around the important part of a C<diff> hunk. These are contents that
 have I<not> changed between the files being C<diff>ed.
 
-=item C<< <span class="ins"> >>
+=item * C<< <span class="ins"> >>
 
 An insertion line, starting with C<+>.
 
-=item C<< <span class="del"> >>
+=item * C<< <span class="del"> >>
 
 A deletion line, starting with C<->.
 
-=item C<< <span class="hunkfooter"> >>
+=item * C<< <span class="hunkfooter"> >>
 
 The footer section of a hunk; contains no contents.
 
 =back
 
-=item C<< <span class="filefooter"> >>
+=item * C<< <span class="filefooter"> >>
 
 The footer section of a file; contains no contents.
 
