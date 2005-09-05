@@ -1,5 +1,5 @@
 .file span { display: block; }
-.file .fileheader, .hunkheader {color: #888888; }
+.file .fileheader, .file .hunkheader {color: #888888; }
 .hunk .ctx { background: #eeeeee; }
 .hunk .ins { background: #ddffdd; }
 .hunk .del { background: #ffdddd; }

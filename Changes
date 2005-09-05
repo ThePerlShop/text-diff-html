@@ -1,6 +1,7 @@
 Revision history for Perl extension Text::Diff::HTML.
 
 0.03
+      - Fixed slight inaccuracy in sample CSS.
 
 0.02  2005-09-04T17:01:59
       - Added "See Also" section to documentation.
