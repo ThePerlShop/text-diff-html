@@ -1,5 +1,7 @@
 Revision history for Perl extension Text::Diff::HTML.
 
+0.05
+
 0.04  2005-09-06T16:33:51
       - Swiched from <span class="ins"> and <span class="del"> to <ins>
         and <del> elements. Why didn't I notice those before? Sorry for yet
