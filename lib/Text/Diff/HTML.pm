@@ -57,9 +57,9 @@ use constant SEQ_A_IDX => 0;
 use constant SEQ_B_IDX => 1;
 
 my %code_map = (
-    '+' => 'ins',
-    '-' => 'del',
-    ' ' => 'ctx',
+    '+' => [ 'ins'              => 'ins' ],
+    '-' => [ 'del'              => 'del' ],
+    ' ' => [ 'span class="ctx"' => 'span' ]
 );
 
 sub hunk {
@@ -70,17 +70,17 @@ sub hunk {
 
     # Start the span element for the first opcode.
     my $last = $ops->[0][ OPCODE ];
-    my $hunk = qq{<span class="$code_map{ $last }">};
+    my $hunk = qq{<$code_map{ $last }->[0]>};
 
     # Output each line of the hunk.
     while (my $op = shift @$ops) {
         my $opcode = $op->[OPCODE];
-        my $class  = $code_map{ $opcode } or next;
+        my $elem   = $code_map{ $opcode } or next;
 
         # Close the last span and start a new one for a new opcode.
         if ($opcode ne $last) {
+            $hunk .= "</$code_map{ $last }->[1]><$elem->[0]>";
             $last  = $opcode;
-            $hunk .= qq{</span><span class="$class">};
         }
 
         # Output the appropriate line.
@@ -88,7 +88,7 @@ sub hunk {
         $hunk  .= encode_entities("$opcode $seqs->[$idx][$op->[$idx]]");
     }
 
-    return $hunk . '</span>';
+    return $hunk . "</$code_map{ $last }->[1]>";
 }
 
 1;
@@ -133,8 +133,8 @@ In the XHTML formatted by this module, the contents of the diff returned by
 C<diff()> are wrapped in a C<< <div> >> element, as is each hunk of the diff.
 Within each hunk, all content is properly HTML encoded using
 L<HTML::Entities|HTML::Entities>, and the various sections of the diff are
-marked up with C<< <span> >> elements. Each C<< <div> >> and C<< <span> >>
-element has a class, defined as follows:
+marked up with the appropriate XHTML elements. The elements used are as
+follows:
 
 =over
 
@@ -174,13 +174,13 @@ This element immediately follows the opening "hunk" C<< <div> >> element.
 Context around the important part of a C<diff> hunk. These are contents that
 have I<not> changed between the files being C<diff>ed.
 
-=item * C<< <span class="ins"> >>
+=item * C<< <ins> >>
 
-An insertion line, starting with C<+>.
+Inserted content, each line starting with C<+>.
 
-=item * C<< <span class="del"> >>
+=item * C<< <del> >>
 
-A deletion line, starting with C<->.
+Deleted content, each line starting with C<->.
 
 =item * C<< <span class="hunkfooter"> >>
 
@@ -196,10 +196,10 @@ The footer section of a file; contains no contents.
 
 =back
 
-You may do whatever you like with these classes; I highly recommend that you
-style them using CSS. You'll find an example CSS file in the F<eg> directory
-in the Text-Diff-HTML distribution. You will also likely want to wrap the
-output of your diff a C<< <pre> >> element.
+You may do whatever you like with these elements and classes; I highly
+recommend that you style them using CSS. You'll find an example CSS file in
+the F<eg> directory in the Text-Diff-HTML distribution. You will also likely
+want to wrap the output of your diff a C<< <pre> >> element.
 
 =head1 See Also
 

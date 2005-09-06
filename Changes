@@ -1,6 +1,12 @@
 Revision history for Perl extension Text::Diff::HTML.
 
 0.04
+      - Swiched from <span class="ins"> and <span class="del"> to <ins>
+        and <del> elements. Why didn't I notice those before? Sorry for yet
+        another change in the XHTML, but this is more semantic, and I there-
+        fore don't expect to change it again. Suggested by Lucas Carlson.
+      - Rejiggered sample CSS in "eg/diff.css" for new XHTML elements and
+        shorter background color specs.
 
 0.03  2005-09-05T18:40:29
       - Improved CSS examples in "eg/diff.css" by using more specific

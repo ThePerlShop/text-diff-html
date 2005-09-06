@@ -63,7 +63,7 @@ my @ops = (
 is $html_diff->hunk(\@file_one, \@file_two, \@ops),
     qq{<span class="ctx">  This is the first file. We this line will be changed.\n}
     . qq{  This one will stay &lt;em&gt;the same.&lt;/em&gt;\n}
-    . qq{</span><span class="del">- And so will this one.\n}
-    . qq{</span><span class="ins">+ But only the second file will have this line.\n}
-    . qq{</span>},
+    . qq{</span><del>- And so will this one.\n}
+    . qq{</del><ins>+ But only the second file will have this line.\n}
+    . qq{</ins>},
     'hunk() should give us what we expect.';
