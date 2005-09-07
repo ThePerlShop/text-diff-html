@@ -157,7 +157,7 @@ This element immediately follows the opening "file" C<< <div> >> element.
 =item * C<< <div class="hunk"> >>
 
 This element contains a single diff "hunk". Each hunk may contain the
-following C<< <span> >> elements:
+following elements:
 
 =over
 
