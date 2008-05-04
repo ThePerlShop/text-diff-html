@@ -1,8 +1,9 @@
 Revision history for Perl extension Text::Diff::HTML.
 
-0.05
+0.05  2008-05-04T02:11:09
       - Added the "configure_requires" and "recommends" parameters to
         Build.PL.
+      - Added a link to the Subversion repository.
 
 0.04  2005-09-06T16:33:51
       - Swiched from <span class="ins"> and <span class="del"> to <ins>

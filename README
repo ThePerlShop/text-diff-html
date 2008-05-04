@@ -23,12 +23,14 @@ Description
     HTML::Entities, and the various sections of the diff are marked up with
     the appropriate XHTML elements. The elements used are as follows:
 
-    * "<div class="file">"
+    *   "<div class="file">"
+
         This element contains the entire contents of the diff "file"
         returned by "diff()". All of the following elements are subsumed by
         this one.
 
-        * "<span class="fileheader">"
+        *   "<span class="fileheader">"
+
             The header section for the files being "diff"ed, usually
             something like:
 
@@ -38,11 +40,13 @@ Description
             This element immediately follows the opening "file" "<div>"
             element.
 
-        * "<div class="hunk">"
-            This element contains a single diff "hunk". Each hunk may
-            contain the following "<span>" elements:
+        *   "<div class="hunk">"
 
-            * "<span class="hunkheader">"
+            This element contains a single diff "hunk". Each hunk may
+            contain the following elements:
+
+            *   "<span class="hunkheader">"
+
                 Header for a diff hunk. The hunk header is usually something
                 like:
 
@@ -51,21 +55,26 @@ Description
                 This element immediately follows the opening "hunk" "<div>"
                 element.
 
-            * "<span class="ctx">"
+            *   "<span class="ctx">"
+
                 Context around the important part of a "diff" hunk. These
                 are contents that have *not* changed between the files being
                 "diff"ed.
 
-            * "<ins>"
+            *   "<ins>"
+
                 Inserted content, each line starting with "+".
 
-            * "<del>"
+            *   "<del>"
+
                 Deleted content, each line starting with "-".
 
-            * "<span class="hunkfooter">"
+            *   "<span class="hunkfooter">"
+
                 The footer section of a hunk; contains no contents.
 
-        * "<span class="filefooter">"
+        *   "<span class="filefooter">"
+
             The footer section of a file; contains no contents.
 
     You may do whatever you like with these elements and classes; I highly
@@ -77,14 +86,19 @@ See Also
     Text::Diff
     Algorithm::Diff
 
-Bugs
-    Please send bug reports to <bug-text-diff-html@rt.cpan.org>.
+Support
+    This module is stored in an open repository at the following address:
+
+    <https://svn.kineticode.com/Text-Diff-HTML/trunk/>
+
+    Patches against SVN::Notify are welcome. Please send bug reports to
+    <bug-text-diff-html@rt.cpan.org>.
 
 Author
     David Wheeler <david@kineticode.com>
 
 Copyright and License
-    Copyright (c) 2005 Kineticode, Inc. All Rights Reserved.
+    Copyright (c) 2005-2008 Kineticode, Inc. Some Rights Reserved.
 
     This module is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
