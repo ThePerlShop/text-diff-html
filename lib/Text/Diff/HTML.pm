@@ -199,7 +199,8 @@ The footer section of a file; contains no contents.
 You may do whatever you like with these elements and classes; I highly
 recommend that you style them using CSS. You'll find an example CSS file in
 the F<eg> directory in the Text-Diff-HTML distribution. You will also likely
-want to wrap the output of your diff a C<< <pre> >> element.
+want to wrap the output of your diff in its own element (a C<< <div> >> will
+do) styled with "white-space: pre".
 
 =head1 See Also
 

@@ -2,6 +2,10 @@ Revision history for Perl extension Text::Diff::HTML.
 
 0.06
       - Fixed a pasto in the "Support" section of the documentation.
+      - Changed the documention from recommending that the diff output be
+        wrapped in <pre> tags to suggesting instead that it be wrapped in an
+        element that uses the CSS "white-space: pre". Reported by Pete Gillin
+        (RT #24301).
 
 0.05  2008-05-04T02:11:09
       - Added the "configure_requires" and "recommends" parameters to
