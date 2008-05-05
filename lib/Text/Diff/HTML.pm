@@ -217,7 +217,7 @@ This module is stored in an open repository at the following address:
 
 L<https://svn.kineticode.com/Text-Diff-HTML/trunk/>
 
-Patches against SVN::Notify are welcome. Please send bug reports to
+Patches against Text::Diff::HTML are welcome. Please send bug reports to
 <bug-text-diff-html@rt.cpan.org>.
 
 =head1 Author
