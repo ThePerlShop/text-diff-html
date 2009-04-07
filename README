@@ -80,7 +80,8 @@ Description
     You may do whatever you like with these elements and classes; I highly
     recommend that you style them using CSS. You'll find an example CSS file
     in the eg directory in the Text-Diff-HTML distribution. You will also
-    likely want to wrap the output of your diff a "<pre>" element.
+    likely want to wrap the output of your diff in its own element (a
+    "<div>" will do) styled with "white-space: pre".
 
 See Also
     Text::Diff
@@ -98,7 +99,7 @@ Author
     David Wheeler <david@kineticode.com>
 
 Copyright and License
-    Copyright (c) 2005-2008 Kineticode, Inc. Some Rights Reserved.
+    Copyright (c) 2005-2009 Kineticode, Inc. Some Rights Reserved.
 
     This module is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

@@ -1,6 +1,6 @@
 Revision history for Perl extension Text::Diff::HTML.
 
-0.06
+0.06  2009-04-07T16:13:05
       - Fixed a pasto in the "Support" section of the documentation.
       - Changed the documention from recommending that the diff output be
         wrapped in <pre> tags to suggesting instead that it be wrapped in an

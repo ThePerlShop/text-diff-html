@@ -1,6 +1,6 @@
 ---
 name: Text-Diff-HTML
-version: 0.05
+version: 0.06
 author:
   - 'David Wheeler <david@kineticode.com>'
 abstract: XHTML format for Text::Diff::Unified
@@ -20,8 +20,8 @@ recommends:
 provides:
   Text::Diff::HTML:
     file: lib/Text/Diff/HTML.pm
-    version: 0.05
-generated_by: Module::Build version 0.280801
+    version: 0.06
+generated_by: Module::Build version 0.32
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2
