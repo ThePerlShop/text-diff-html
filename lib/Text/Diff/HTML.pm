@@ -112,16 +112,15 @@ Text::Diff::HTML - XHTML format for Text::Diff::Unified
 =head1 Description
 
 This class subclasses Text::Diff::Unified, a formatting class provided by the
-L<Text::Diff|Text::Diff> module, to add XHTML markup to the unified diff
-format. For details on the interface of the C<diff()> function, see the
-L<Text::Diff|Text::Diff> documentation.
+L<Text::Diff> module, to add XHTML markup to the unified diff format. For
+details on the interface of the C<diff()> function, see the L<Text::Diff>
+documentation.
 
 In the XHTML formatted by this module, the contents of the diff returned by
 C<diff()> are wrapped in a C<< <div> >> element, as is each hunk of the diff.
 Within each hunk, all content is properly HTML encoded using
-L<HTML::Entities|HTML::Entities>, and the various sections of the diff are
-marked up with the appropriate XHTML elements. The elements used are as
-follows:
+L<HTML::Entities>, and the various sections of the diff are marked up with the
+appropriate XHTML elements. The elements used are as follows:
 
 =over
 
@@ -193,9 +192,9 @@ do) styled with "white-space: pre".
 
 =over
 
-=item L<Text::Diff|Text::Diff>
+=item L<Text::Diff>
 
-=item L<Algorithm::Diff|Algorithm::Diff>
+=item L<Algorithm::Diff>
 
 =back
 
