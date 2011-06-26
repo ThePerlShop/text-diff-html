@@ -2,7 +2,7 @@
 \bRCS\b
 \bCVS\b
 ,v$
-\B\.svn\b
+\B\.git
 
 # Avoid Makemaker generated and utility files.
 \bMakefile$
@@ -26,3 +26,5 @@
 
 # Avoid build files.
 ^Text-Diff-HTML
+^MYMETA\.yml$
+^MYMETA\.json$
