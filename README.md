@@ -1,4 +1,4 @@
-Text/Diff/HTML version 0.07
+Text/Diff/HTML version 0.08
 ===========================
 
 This class subclasses
