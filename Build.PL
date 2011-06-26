@@ -4,7 +4,6 @@ my $build = Module::Build->new(
     module_name        => 'Text::Diff::HTML',
     license            => 'perl',
     create_makefile_pl => 'traditional',
-    create_readme      => 1,
     configure_requires => { 'Module::Build' => '0.2701' },
     recommends         => { 'Test::Pod'     => '1.41'   },
     build_requires     => {
