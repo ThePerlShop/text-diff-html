@@ -1,7 +1,5 @@
 package Text::Diff::HTML;
 
-# $Id$
-
 use strict;
 use vars qw(@ISA $VERSION);
 use HTML::Entities;
