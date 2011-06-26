@@ -94,17 +94,6 @@ __END__
 
 ##############################################################################
 
-=begin comment
-
-Fake-out Module::Build. Delete if it ever changes to support =head1 headers
-other than all uppercase.
-
-=head1 NAME
-
-Text::Diff::HTML - XHTML format for Text::Diff::Unified
-
-=end comment
-
 =head1 Name
 
 Text::Diff::HTML - XHTML format for Text::Diff::Unified
@@ -221,15 +210,6 @@ Issues|http://github.com/theory/text-diff-html/issues/> or by sending mail to
 L<bug-Text-Diff-HTML@rt.cpan.org|mailto:bug-Text-Diff-HTML@rt.cpan.org>.
 
 =head1 Author
-
-=begin comment
-
-Fake-out Module::Build. Delete if it ever changes to support =head1 headers
-other than all uppercase.
-
-=head1 AUTHOR
-
-=end comment
 
 David Wheeler <david@kineticode.com>
 
