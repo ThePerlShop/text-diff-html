@@ -15,5 +15,12 @@ my $build = Module::Build->new(
         Text::Diff     => '0.11',
         HTML::Entities => '0',
     },
+    meta_merge => {
+        resources => {
+            homepage   => 'http://search.cpan.org/dist/Text-Diff-HTML/',
+            bugtracker => 'http://github.com/theory/text-diff-html/issues/',
+            repository => 'http://github.com/theory/text-diff-html/',
+        }
+    },
 );
 $build->create_build_script;

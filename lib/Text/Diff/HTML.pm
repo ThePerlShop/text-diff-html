@@ -214,12 +214,13 @@ do) styled with "white-space: pre".
 
 =head1 Support
 
-This module is stored in an open repository at the following address:
+This module is stored in an open L<GitHub
+repository|http://github.com/theory/text-diff-html/>. Feel free to fork and
+contribute!
 
-L<https://svn.kineticode.com/Text-Diff-HTML/trunk/>
-
-Patches against Text::Diff::HTML are welcome. Please send bug reports to
-<bug-text-diff-html@rt.cpan.org>.
+Please file bug reports via L<GitHub
+Issues|http://github.com/theory/text-diff-html/issues/> or by sending mail to
+L<bug-Text-Diff-HTML@rt.cpan.org|mailto:bug-Text-Diff-HTML@rt.cpan.org>.
 
 =head1 Author
 
