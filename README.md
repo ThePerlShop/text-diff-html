@@ -37,7 +37,7 @@ Text::WordDiff requires the following modules:
 * Text::Diff 0.11
 * HTML::Entities
 
-Copyright and Licence
+Copyright and License
 ---------------------
 
 Copyright (c) 2005-2011 David E. Wheeler. Some Rights Reserved.
