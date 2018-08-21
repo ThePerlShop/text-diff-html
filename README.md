@@ -37,11 +37,11 @@ Text::WordDiff requires the following modules:
 * Text::Diff 0.11
 * HTML::Entities
 
-Copyright and Licence
+Copyright and License
 ---------------------
 
 Copyright (c) 2005-2011 David E. Wheeler. Some Rights Reserved.
 
 This module is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself.
+terms of the Artistic License version 2.0.
 
